@@ -5,3 +5,4 @@ tools.py
 youtube_data.json
 main_dev.py
 update_schedule_data_dev.py
+.env

@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import pytz
 from isodate import parse_duration
 from googleapiclient.discovery import build
+from dotenv import load_dotenv
 
 def sanitize_text(text: str) -> str:
     """Replace newline characters with HTML break tags."""
@@ -202,7 +203,14 @@ def upload_data_to_d1(data):
     else:
         print("Failed to upload data:", response.status_code, response.text)
 
+def load_env():
+    env_path = os.path.join(os.path.dirname(__file__), '.env')
+    if os.path.exists(env_path):
+        load_dotenv(env_path)
+
 def main():
+    load_env()
+
     start_time = datetime.now()
     print(f"Process started at: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
 
